@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="hturki@autobot.vision.cs.cmu.edu:22 key (4)" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="autobot">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/project_data/ramanan/hturki/pynerf" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hturki@autobot.vision.cs.cmu.edu:22 key (4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/project_data/ramanan/hturki/pynerf" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hturki@trinity.vision.cs.cmu.edu (4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/hturki/pynerf" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hturki@trinity.vision.cs.cmu.edu (5)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/hturki/pynerf" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

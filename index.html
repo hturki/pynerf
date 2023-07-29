@@ -1,0 +1,204 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="StyleSheet" href="css/projects.css" type="text/css" media="all">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <title>PyNeRF: Pyramidal Neural Radiance Fields</title>
+  <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+   <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
+        if you update and want to force Facebook to re-scrape. -->
+    <!-- TODO <meta property="og:image" content="./resources/trailer.gif"/> -->
+    <meta property="og:title" content="PyNeRF: Pyramidal Neural Radiance Fields"/>
+    <meta property="og:description"
+          content="Neural Radiance Fields (NeRFs) can be dramatically accelerated by spatial grid representations. However, they do not explicitly reason about scale and so introduce aliasing artifacts when reconstructing scenes captured at different camera distances. Mip-NeRF and its extensions propose scale-aware renderers that project volumetric frustums rather than point samples but such approaches rely on positional encodings that are not readily compatible with grid methods. We propose a simple modification to grid-based models by training model heads at different spatial grid resolutions. At render time, we simply use coarser grids to render samples that cover larger volumes. Our method can be easily applied to existing accelerated NeRF methods and significantly improves rendering quality (reducing error rates by 20–90% across synthetic and unbounded real-world scenes) while incurring minimal performance overhead (as each model head is quick to evaluate). Compared to Mip-NeRF, we reduce error rates by 20% while training over 60× faster."/>
+    <!-- TODO  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG05XP66X6"></script> -->
+<!--  TODO    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YG05XP66X6');
+    </script> -->
+</head>
+
+<body>
+
+  <div class="content content-title" style="text-align: center">
+    <h1>PyNeRF: Pyramidal Neural Radiance Fields</h1>
+    <h3 id="conference">NeurIPS 2023</h3>
+
+    <div id="authors">
+        <h3>
+            <span><a href="https://haithemturki.com">Haithem Turki</a><sup>1</sup></span>
+            <span><a href="https://zollhoefer.com">Michael Zollhöfer</a><sup>2</sup></span>
+            <span><a href="https://richardt.name">Christian Richardt</a><sup>2</sup></span>
+            <span><a href="http://www.cs.cmu.edu/~deva">Deva Ramanan</a><sup>1</sup></span>
+        </h3>
+
+        <h3>
+        <span><sup>1&nbsp;</sup>Carnegie Mellon University</span>
+        <span><sup>2&nbsp;</sup>Meta Reality Labs Research</span>
+        <h3>
+    </div>
+
+    <h3 id="menu"><a href='./resources/paper.pdf'>Paper</a></h3>
+    <h3><a href="https://github.com/hturki/pynerf">Code</a></h3>
+    <h3><a href="https://drive.google.com/file/d/1y4F4tuAs4WT3d2cO1gD0NeAcgKv0Ip_7/view?usp=sharing">Data</a></h3>
+  </div>
+
+  <div class="content">
+    <!-- <img src="resources/clusters.jpg" style="width: 80%; margin: auto; display: block; padding-bottom: 20px"> -->
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Abstract</h3>
+    </div>
+    <figure style="font-style: italic; font-weight: normal; margin: 0px; padding: 0px; border: 0px; text-align:center">
+      <figcaption>
+        Neural Radiance Fields (NeRFs) can be dramatically accelerated by spatial grid representations. However, they do not explicitly reason about scale and so introduce aliasing artifacts when reconstructing scenes captured at different camera distances. <a href="https://jonbarron.info/mipnerf">Mip-NeRF</a> and its extensions propose scale-aware renderers that project volumetric frustums rather than point samples but such approaches rely on positional encodings that are not readily compatible with grid methods. We propose a simple modification to grid-based models by training model heads at different spatial grid resolutions. At render time, we simply use coarser grids to render samples that cover larger volumes. Our method can be easily applied to existing accelerated NeRF methods and significantly improves rendering quality (reducing error rates by 20–90% across synthetic and unbounded real-world scenes) while incurring minimal performance overhead (as each model head is quick to evaluate). Compared to Mip-NeRF, we reduce error rates by 20% while training over 60× faster.
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Approach</h3>
+    </div>
+    <figure style="font-style: italic; font-weight: normal; margin: 0px; padding: 0px; border: 0px">
+        <figcaption style="margin-bottom: 20px">
+            Most NeRF methods assume that train and test-time cameras capture scene content from a roughly constant distance:
+        </figcaption>
+
+        <table>
+          <tbody>
+            <tr>
+              <td style="width: 48%;">
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="./images/ficus-cameras.jpg" style="width: 80%;">
+            </div>
+
+            </td>
+              <td style="width: 4%;"><img src="./images/arrow-right.svg" style="width: 100%;"></td>
+              <td style="width: 48%;">
+                <video width="100%" autoplay loop>
+                    <source src="./vids/ficus-rotation.mp4" type="video/mp4" >
+                </video>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <figcaption style="margin-top: 40px; margin-bottom: 40px">
+            They degrade and render blurry views in less constrained settings:
+        </figcaption>
+
+        <table>
+          <tbody>
+            <tr>
+              <td style="width: 48%;">
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="./images/ficus-cameras-different.jpg" style="width: 80%;">
+            </div>
+
+            </td>
+              <td style="width: 4%;"><img src="./images/arrow-right.svg" style="width: 100%;"></td>
+              <td style="width: 48%;">
+                <video width="100%" autoplay loop>
+                    <source src="./vids/ficus-zoom-nerf.mp4" type="video/mp4" >
+                </video>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+<!--         <video width="100%" autoplay loop style="padding-bottom: 20px">
+            <source src="./vids/ficus-zoom.mp4" type="video/mp4">
+        </video> -->
+
+        <figcaption style="margin-top: 40px; margin-bottom: 40px">
+            This is due to NeRF being scale-unaware, as it reasons about point samples instead of volumes. We address this by training a pyramid of NeRFs that divide the scene at different resolutions. We use "coarse" NeRFs for far-away samples, and finer NeRF for close-up samples:
+        </figcaption>
+
+        <img src="./images/model.jpg" width="70%" style="display: block; margin-left: auto; margin-right: auto">
+    </figure>
+  </div>
+
+  <div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Multiscale Blender</h3>
+        <button class="selected-scene" id="ficus">Ficus</button><button id="lego">Lego</button><button id="mic">Mic</button><button id="ship">Ship</button>
+    </div>
+    <figure style="font-style: italic; font-weight: normal; margin: 0px; padding: 0px; border: 0px">
+        <figcaption style="margin-bottom: 20px">
+            We evaluate HybridNeRF against the <a href="https://jonbarron.info/mipnerf/">Multiscale Blender</a> dataset. We outperform other fast NeRF methods (such as <a href="https://sarafridov.github.io/K-Planes/">K-Planes</a> and <a href="https://dl.acm.org/doi/abs/10.1145/3588432.3591516">Nerfacto</a>) by a wide margin. We provide slightly better results than <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a> while training over 60× faster.
+        </figcaption>
+        <video width="90%" autoplay loop style="margin-left: auto; margin-right: auto; display: block;" id="multiscale-video">
+            <source src="./vids/ficus.mp4" type="video/mp4">
+        </video>
+    </figure>
+</div>
+
+
+  <div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Blender-A</h3>
+        <button class="selected-scene" id="checkerboard">Checkerboard</button><button id="brick">Brick</button>
+    </div>
+    <figure style="font-style: italic; font-weight: normal; margin: 0px; padding: 0px; border: 0px">
+        <figcaption style="margin-bottom: 20px">
+            We provide <a href="https://drive.google.com/file/d/1y4F4tuAs4WT3d2cO1gD0NeAcgKv0Ip_7/view?usp=sharing">additional scenes</a> that test common aliasing patterns and compare to prior work. Our method provides the best reconstruction results.
+        </figcaption>
+        <video width="90%" controls style="margin-left: auto; margin-right: auto; display: block;" id="blender-a-video">
+            <source src="./vids/checkerboard.mp4" type="video/mp4">
+        </video>
+    </figure>
+</div>
+
+  <div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Real-World</h3>
+        <button class="selected-scene" id="boat-nearest">PyNeRF</button><button id="boat-comp">Comparisons</button>
+    </div>
+    <figure style="font-style: italic; font-weight: normal; margin: 0px; padding: 0px; border: 0px">
+        <figcaption style="margin-bottom: 20px">
+            We also test our method on real-world captures such the Boat scene from the <a href="https://github.com/darglein/ADOP">ADOP</a> dataset. Here, we zoom into the boat following a novel camera trajectory that differs greatly from the training image views.
+        </figcaption>
+        <video width="90%" controls style="margin-left: auto; margin-right: auto; display: block;" id="boat-video">
+            <source src="./vids/boat-nearest.mp4" type="video/mp4">
+        </video>
+    </figure>
+</div>
+
+<div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Concurrent Work</h3>
+    </div>
+    <figure style="font-weight: normal; text-align:center">
+        <figcaption style="margin-bottom: 20px">
+            Please also check out <a href="https://wbhu.github.io/projects/Tri-MipRF/">Tri-MipRF</a> and <a href="https://arxiv.org/abs/2304.10075">Mip-VoG</a>, which use prefiltering-based approaches to handle anti-aliasing. <a href="https://jonbarron.info/zipnerf/">Zip-NeRF</a> uses multisampling to address the same problem.
+        </figcaption>
+    </figure>
+  </div>
+
+<div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Citation</h3>
+    </div>
+    <figure style="font-weight: normal; text-align:center">
+        <pre>
+            <code>
+                @InProceedings{turki2023pynerf,
+                    title = {PyNeRF: Pyramidal Neural Radiance Fields},
+                    author = {Turki, Haithem and Zollh\"{o}fer, Michael and Richardt, Christian and Ramanan, Deva},
+                    booktitle={Thirty-Seventh Conference on Neural Information Processing Systems},
+                    year = {2023}
+                }
+            </code>
+        </pre>
+    </figure>
+  </div>
+
+  <script src="resources/handler.js"></script>
+</body>
+</html>
+
