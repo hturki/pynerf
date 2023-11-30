@@ -91,7 +91,7 @@
             </td>
               <td style="width: 4%;"><img src="./images/arrow-right.svg" style="width: 100%;"></td>
               <td style="width: 48%;">
-                <video width="100%" autoplay loop>
+                <video width="100%" autoplay loop controls>
                     <source src="./vids/ficus-rotation.mp4" type="video/mp4" >
                 </video>
               </td>
@@ -114,17 +114,13 @@
             </td>
               <td style="width: 4%;"><img src="./images/arrow-right.svg" style="width: 100%;"></td>
               <td style="width: 48%;">
-                <video width="100%" autoplay loop>
+                <video width="100%" autoplay loop controls>
                     <source src="./vids/ficus-zoom-nerf.mp4" type="video/mp4" >
                 </video>
               </td>
             </tr>
           </tbody>
         </table>
-
-<!--         <video width="100%" autoplay loop style="padding-bottom: 20px">
-            <source src="./vids/ficus-zoom.mp4" type="video/mp4">
-        </video> -->
 
         <figcaption style="margin-top: 40px; margin-bottom: 40px">
             This is due to NeRF being scale-unaware, as it reasons about point samples instead of volumes. We address this by training a pyramid of NeRFs that divide the scene at different resolutions. We use "coarse" NeRFs for far-away samples, and finer NeRF for close-up samples:
@@ -143,7 +139,7 @@
         <figcaption style="margin-bottom: 20px">
             We evaluate HybridNeRF against the <a href="https://jonbarron.info/mipnerf/">Multiscale Blender</a> dataset. We outperform other fast NeRF methods (such as <a href="https://sarafridov.github.io/K-Planes/">K-Planes</a> and <a href="https://dl.acm.org/doi/abs/10.1145/3588432.3591516">Nerfacto</a>) by a wide margin. We provide slightly better results than <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a> while training over 60× faster.
         </figcaption>
-        <video width="90%" autoplay loop style="margin-left: auto; margin-right: auto; display: block;" id="multiscale-video">
+        <video width="90%" autoplay loop controls style="margin-left: auto; margin-right: auto; display: block;" id="multiscale-video">
             <source src="./vids/ficus.mp4" type="video/mp4">
         </video>
     </figure>
