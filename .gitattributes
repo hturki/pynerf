@@ -1,0 +1,11 @@
+vids/brick.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/ficus-zoom-nerf.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/lego.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/mic.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/overview.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/boat-nearest.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/checkerboard.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/ficus-rotation.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/ficus.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/ship.mp4 filter=lfs diff=lfs merge=lfs -text
+vids/boat-comp.mp4 filter=lfs diff=lfs merge=lfs -text

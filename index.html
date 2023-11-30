@@ -13,14 +13,14 @@
     <meta property="og:title" content="PyNeRF: Pyramidal Neural Radiance Fields"/>
     <meta property="og:description"
           content="Neural Radiance Fields (NeRFs) can be dramatically accelerated by spatial grid representations. However, they do not explicitly reason about scale and so introduce aliasing artifacts when reconstructing scenes captured at different camera distances. Mip-NeRF and its extensions propose scale-aware renderers that project volumetric frustums rather than point samples but such approaches rely on positional encodings that are not readily compatible with grid methods. We propose a simple modification to grid-based models by training model heads at different spatial grid resolutions. At render time, we simply use coarser grids to render samples that cover larger volumes. Our method can be easily applied to existing accelerated NeRF methods and significantly improves rendering quality (reducing error rates by 20–90% across synthetic and unbounded real-world scenes) while incurring minimal performance overhead (as each model head is quick to evaluate). Compared to Mip-NeRF, we reduce error rates by 20% while training over 60× faster."/>
-    <!-- TODO  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG05XP66X6"></script> -->
-<!--  TODO    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B4YVDTE0TV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-      gtag('config', 'G-YG05XP66X6');
-    </script> -->
+  gtag('config', 'G-B4YVDTE0TV');
+</script>
 </head>
 
 <body>
@@ -57,6 +57,17 @@
       <figcaption>
         Neural Radiance Fields (NeRFs) can be dramatically accelerated by spatial grid representations. However, they do not explicitly reason about scale and so introduce aliasing artifacts when reconstructing scenes captured at different camera distances. <a href="https://jonbarron.info/mipnerf">Mip-NeRF</a> and its extensions propose scale-aware renderers that project volumetric frustums rather than point samples but such approaches rely on positional encodings that are not readily compatible with grid methods. We propose a simple modification to grid-based models by training model heads at different spatial grid resolutions. At render time, we simply use coarser grids to render samples that cover larger volumes. Our method can be easily applied to existing accelerated NeRF methods and significantly improves rendering quality (reducing error rates by 20–90% across synthetic and unbounded real-world scenes) while incurring minimal performance overhead (as each model head is quick to evaluate). Compared to Mip-NeRF, we reduce error rates by 20% while training over 60× faster.
       </figcaption>
+    </figure>
+  </div>
+
+  <div class="content">
+    <div style="text-align: center; padding-bottom:20px">
+        <h3>Overview</h3>
+    </div>
+    <figure style="font-style: italic; font-weight: normal; margin: 0px; padding: 0px; border: 0px">
+        <video width="100%" controls style="padding-bottom: 20px">
+            <source src="./vids/overview.mp4" type="video/mp4">
+        </video>
     </figure>
   </div>
 
