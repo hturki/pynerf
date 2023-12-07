@@ -48,19 +48,19 @@ const brick = document.getElementById("brick");
 
 checkerboard.addEventListener("click", function(e){
   blenderAVideo.src = "./vids/checkerboard.mp4";
-  blenderAVideo.poster = "./vids/checkerboard.jpg";
+  blenderAVideo.poster = "./images/checkerboard.jpg";
   checkerboard.className = "selected-scene";
   brick.className = "";
 });
 
 brick.addEventListener("click", function(e){
   blenderAVideo.src = "./vids/brick.mp4";
-  blenderAVideo.src =  " ./vids/brick.mp4";
+  blenderAVideo.poster =  " ./images/brick.jpg";
   checkerboard.className = "";
   brick.className = "selected-scene";
 });
 
-blenderAVideo.poster = "./vids/checkerboard.jpg";
+blenderAVideo.poster = "./images/checkerboard.jpg";
 
 const boatVideo = document.getElementById("boat-video");
 const boatNearest = document.getElementById("boat-nearest");
@@ -68,16 +68,16 @@ const boatComp = document.getElementById("boat-comp");
 
 boatNearest.addEventListener("click", function(e){
   boatVideo.src = "./vids/boat-nearest.mp4";
-  boatVideo.poster = "./vids/boat-nearest.jpg";
+  boatVideo.poster = "./images/boat-nearest.jpg";
   boatNearest.className = "selected-scene";
   boatComp.className = "";
 });
 
 boatComp.addEventListener("click", function(e){
   boatVideo.src = "./vids/boat-comp.mp4";
-  boatVideo.poster = "./vids/boat-comp.jpg";
+  boatVideo.poster = "./images/boat-comp.jpg";
   boatNearest.className = "";
   boatComp.className = "selected-scene";
 });
 
-boatVideo.poster = "./vids/boat-nearest.jpg";
+boatVideo.poster = "./images/boat-nearest.jpg";
