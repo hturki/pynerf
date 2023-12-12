@@ -146,7 +146,7 @@ class PyNeRFBaseModelConfig(ModelConfig):
     """Number of levels in the PyNeRF hierarchy."""
     scale_factor: float = 2
     """Scale factor between levels in the PyNeRF hierarchy."""
-    share_feature_grid: bool = False
+    share_feature_grid: bool = True
     """Whether to share the same feature grid between levels."""
 
 class PyNeRFBaseModel(Model):

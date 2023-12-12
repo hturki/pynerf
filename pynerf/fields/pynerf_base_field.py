@@ -266,12 +266,10 @@ class PyNeRFBaseField(Field):
             elif self.training:
                 embedded_appearance = self.embedding_appearance(ray_samples.camera_indices.squeeze())
             else:
-                embedded_appearance = self.embedding_appearance(torch.full_like(ray_samples.camera_indices.squeeze(), 540))
-                # embedded_appearance = torch.ones(
-                #     (*directions.shape[:-1], self.appearance_embedding_dim), device=directions.device
-                # ) * self.embedding_appearance.mean(dim=0)
+                embedded_appearance = torch.ones(
+                    (*directions.shape[:-1], self.appearance_embedding_dim), device=directions.device
+                ) * self.embedding_appearance.mean(dim=0)
 
-            # embedded_appearance = self.embedding_appearance(torch.full_like(ray_samples.camera_indices.squeeze(), 544))
             embedded_appearance = embedded_appearance.view(-1, self.appearance_embedding_dim)
 
         outputs = {}
