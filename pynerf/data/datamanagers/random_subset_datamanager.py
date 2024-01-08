@@ -46,7 +46,7 @@ class RandomSubsetDataManagerConfig(DataManagerConfig):
     Record3D."""
     items_per_chunk: int = 25600000
     """Number of entries to load into memory at a time"""
-    local_cache_path: Optional[str] = "/scratch/hturki/pynerf-cache"
+    local_cache_path: Optional[str] = "scratch/pynerf-cache"
     """Caches images and metadata in specific path if set."""
     on_demand_threads: int = 16
     """Number of threads to use when reading data"""
